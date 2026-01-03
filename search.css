@@ -1,0 +1,320 @@
+/* SEARCH PAGE STYLES - mobile-first responsive */
+
+/* 
+  IMPORTANT: Add this to your HTML <head>:
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="search.css">
+*/
+
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #0a54a3;
+  --accent-dark: #083a7f;
+  --radius: 10px;
+  --shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: #111827;
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Search container */
+.search-container {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-container h2 {
+  font-size: 1.35rem;
+  margin: 0 0 1rem 0;
+  text-align: center;
+  color: var(--accent);
+}
+
+/* Search form layout */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .search-form {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+}
+
+/* Search input styling */
+.search-form input {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(10, 84, 163, 0.1);
+}
+
+.search-form input::placeholder {
+  color: var(--muted);
+}
+
+/* Search button */
+.search-form button {
+  padding: 0.875rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(10, 84, 163, 0.25);
+}
+
+.search-form button:hover {
+  background: var(--accent-dark);
+  box-shadow: 0 6px 16px rgba(10, 84, 163, 0.35);
+}
+
+.search-form button:active {
+  transform: scale(0.98);
+}
+
+@media (min-width: 640px) {
+  .search-form button {
+    width: auto;
+  }
+}
+
+/* Search results section */
+.search-results {
+  margin-top: 2rem;
+}
+
+#results-title {
+  font-size: clamp(1.25rem, 5vw, 1.6rem);
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+/* Individual result item */
+.result-item {
+  background: var(--card);
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
+}
+
+.result-item h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.result-item h3 a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.result-item h3 a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+.result-item p {
+  color: var(--muted);
+  margin: 0.75rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.result-item a {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.result-item a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+/* Empty state message */
+.search-results p {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1rem;
+  padding: 2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Narrow container for search results */
+.narrow {
+  width: 92%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .narrow {
+    padding: 1.5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .narrow {
+    padding: 2rem 0;
+  }
+}
+
+/* Highlighting utility for search terms */
+.highlight {
+  background-color: #fef08a;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Accessibility & focus states */
+button, a {
+  transition: all 0.2s ease;
+}
+
+a:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --muted: #cbd5e1;
+  }
+
+  body {
+    color: #f1f5f9;
+  }
+
+  .search-container,
+  .result-item,
+  .search-results p {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .search-form input {
+    background: #334155;
+    color: #f1f5f9;
+    border-color: #475569;
+  }
+
+  .search-form input:focus {
+    border-color: var(--accent);
+  }
+
+  .result-item {
+    border-color: #334155;
+  }
+}
+
+/* Extra small devices (320px and up) */
+@media (max-width: 359px) {
+  .search-container {
+    padding: 1rem;
+  }
+
+  .search-form input,
+  .search-form button {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .search-container {
+    max-width: 500px;
+  }
+
+  .result-item {
+    padding: 1.5rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .search-container {
+    display: none;
+  }
+
+  .result-item {
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+}
+
+/* Text alignment utilities */
+.center-text {
+  text-align: center;
+}
+
+.left-text {
+  text-align: left;
+}
+
+.right-text {
+  text-align: right;
+}
+
+/* Image centering utility */
+.center-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+}

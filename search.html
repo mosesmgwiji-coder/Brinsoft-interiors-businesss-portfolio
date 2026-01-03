@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results | BRINSOFT INTERIORS</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="search.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <img src="img/logo.png" alt="BRINSOFT INTERIORS Logo" class="header-logo">
+      <a href="index.html" style="color: white; margin-left:1rem;">Home</a>
+    </div>
+  </header>
+
+  <main class="container narrow" style="padding: 2rem 0;">
+    <h2 id="results-title">Search results</h2>
+    <div id="results" class="search-results"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; @2026 BRINSOFT INTERIORS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple client-side search index for static site pages
+    const pages = [
+      { title: 'HOME', url: 'index.html', text: 'Welcome to BRINSOFT INTERIORS. Explore services and projects.' },
+      { title: 'SERVICES', url: 'services.html', text: 'Interior design services, residential AND COMMERCIAL.' },
+      { title: 'TESTIMONIES', url: 'testimonies.html', text: 'CLIENT FEEDBACK AND STORIES.' },
+      { title: 'ABOUT US', url: 'about.html', text: 'OUR MISSION, TEAM AND DESIGN PHILOSOPHY.' },
+      { title: 'CONTACT', url: 'contact.html', text: 'GET IN TOUCH FOR CONSULTATIONS AND QUOTES.' }
+    ];
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name) || '';
+    }
+
+    function renderResults(q) {
+      const container = document.getElementById('results');
+      const title = document.getElementById('results-title');
+      const qLower = q.toLowerCase();
+
+      title.textContent = q ? `Search results for: "${q}"` : 'Search results';
+
+      if (!q) {
+        container.innerHTML = '<p>Type a query in the search box and press Enter or click Search.</p>';
+        return;
+      }
+
+      const matches = pages.filter(p =>
+        p.title.toLowerCase().includes(qLower) ||
+        p.text.toLowerCase().includes(qLower) ||
+        p.url.toLowerCase().includes(qLower)
+      );
+
+      if (matches.length === 0) {
+        container.innerHTML = `<p>No results found for "${q}".</p>`;
+        return;
+      }
+
+      container.innerHTML = matches.map(m => `
+        <article class="result-item">
+          <h3><a href="${m.url}">${m.title}</a></h3>
+          <p>${m.text}</p>
+          <a href="${m.url}">${m.url}</a>
+        </article>
+      `).join('\n');
+    }
+
+    // On load, read the query and render
+    document.addEventListener('DOMContentLoaded', () => {
+      const q = getQueryParam('q');
+      renderResults(q);
+    });
+  </script>
+</body>
+</html>

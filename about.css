@@ -1,0 +1,375 @@
+/* ABOUT PAGE STYLES - mobile-first responsive */
+
+/* 
+  IMPORTANT: Add this to your HTML <head>:
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+*/
+
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #0a54a3;
+  --radius: 10px;
+  --shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: #111827;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Page container - responsive width */
+.container {
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 1.5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 2rem 0;
+  }
+}
+
+.about-hero {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.about-hero h2 {
+  font-size: clamp(1.25rem, 5vw, 1.8rem);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.about-hero p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+}
+
+.about-hero img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 0.5rem auto;
+  display: block;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .about-hero {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .about-hero img {
+    order: 2;
+  }
+}
+
+/* Mission / values block - responsive grid */
+.about-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.mission, .vision, .values {
+  background: var(--card);
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mission:hover, .vision:hover, .values:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
+}
+
+.mission h3, .vision h3, .values h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.mission p, .vision p, .values p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Team section - responsive cards */
+.team {
+  margin-top: 2rem;
+}
+
+.team h2 {
+  font-size: clamp(1.25rem, 5vw, 1.6rem);
+  margin-bottom: 1rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  text-align: center;
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-4px);
+}
+
+.team-member img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  margin: 0;
+  display: block;
+}
+
+.team-member .meta {
+  width: 100%;
+}
+
+.team-member .meta h4 {
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.team-member .meta p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .team-member {
+    flex-direction: row;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .team-member img {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .team-member {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .team-member img {
+    width: 88px;
+    height: 88px;
+  }
+}
+
+/* CTA buttons - responsive layout */
+.about-cta {
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-direction: column;
+}
+
+.about-cta .btn-primary,
+.about-cta .btn-secondary {
+  display: block;
+  padding: 0.875rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.about-cta .btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(10, 84, 163, 0.25);
+}
+
+.about-cta .btn-primary:hover,
+.about-cta .btn-primary:focus {
+  background: #083a7f;
+  box-shadow: 0 6px 16px rgba(10, 84, 163, 0.35);
+  outline: none;
+}
+
+.about-cta .btn-secondary {
+  background: transparent;
+  border: 2px solid #ddd;
+  color: var(--muted);
+}
+
+.about-cta .btn-secondary:hover,
+.about-cta .btn-secondary:focus {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+
+@media (min-width: 640px) {
+  .about-cta {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.about-cta .btn-primary,
+.about-cta .btn-secondary {
+  flex: 1;
+}
+
+/* Accessibility & focus states */
+button, a {
+  transition: all 0.2s ease;
+}
+
+.about-hero a:focus,
+.about-cta a:focus,
+.about-cta button:focus,
+.team-member:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --muted: #cbd5e1;
+  }
+
+  body {
+    color: black;
+  }
+
+  .mission, .vision, .values,
+  .about-hero, .team-member,
+  .about-cta .btn-secondary {
+    box-shadow: 0 4px 12px black;
+  }
+}
+
+/* Extra small devices (320px and up) */
+@media (max-width: 359px) {
+  .container {
+    width: 95%;
+  }
+
+  .about-hero,
+  .mission, .vision, .values,
+  .team-member {
+    padding: 1rem;
+  }
+
+  .team-member img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .about-cta {
+    display: none;
+  }
+
+  .about-hero, .mission, .vision, .values, .team-member {
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+}
+
+/* Centering utilities: use these classes on elements to center text or images */
+.center-text {
+  text-align: left;
+}
+
+.center-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  height: auto;
+}
+.left-text {
+  text-align: left;
+}
