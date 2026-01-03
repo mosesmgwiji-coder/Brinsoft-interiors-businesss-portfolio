@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setHeroBackground();
   setHeaderLogo();
   enableSearch();
+  initContactForm();
 });
 
 /* =====================
@@ -183,4 +184,145 @@ function enableSearch() {
       searchBtn.click();
     }
   });
+}
+
+/* =====================
+   CONTACT FORM HANDLING
+===================== */
+function initContactForm() {
+  const contactForm = document.getElementById("contactForm");
+  if (!contactForm) return;
+
+  contactForm.addEventListener("submit", handleContactFormSubmit);
+
+  // Add real-time validation
+  const inputs = contactForm.querySelectorAll("input, textarea");
+  inputs.forEach(input => {
+    input.addEventListener("blur", validateField);
+  });
+}
+
+function validateField(e) {
+  const field = e.target;
+  const errorElement = document.getElementById(field.id + "Error");
+  let isValid = true;
+  let errorMessage = "";
+
+  if (field.name === "name") {
+    if (field.value.trim().length < 2) {
+      isValid = false;
+      errorMessage = "Please enter a valid name";
+    }
+  } else if (field.name === "email") {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(field.value)) {
+      isValid = false;
+      errorMessage = "Please enter a valid email address";
+    }
+  } else if (field.name === "phone") {
+    if (field.value && !/^[\d\s\-\+\(\)]+$/.test(field.value)) {
+      isValid = false;
+      errorMessage = "Please enter a valid phone number";
+    }
+  } else if (field.name === "subject") {
+    if (field.value.trim().length < 3) {
+      isValid = false;
+      errorMessage = "Subject must be at least 3 characters";
+    }
+  } else if (field.name === "message") {
+    if (field.value.trim().length < 10) {
+      isValid = false;
+      errorMessage = "Message must be at least 10 characters";
+    }
+  }
+
+  if (errorElement) {
+    if (!isValid) {
+      errorElement.textContent = errorMessage;
+      errorElement.classList.add("show");
+      field.classList.add("error");
+    } else {
+      errorElement.classList.remove("show");
+      field.classList.remove("error");
+    }
+  }
+
+  return isValid;
+}
+
+function handleContactFormSubmit(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formMessage = document.getElementById("formMessage");
+  const submitBtn = form.querySelector(".submit-btn");
+
+  // Validate all fields
+  const inputs = form.querySelectorAll("input[required], textarea[required]");
+  let isFormValid = true;
+
+  inputs.forEach(input => {
+    if (!validateField({ target: input })) {
+      isFormValid = false;
+    }
+  });
+
+  if (!isFormValid) {
+    showFormMessage("Please fix the errors above", "error");
+    return;
+  }
+
+  // Collect form data
+  const formData = {
+    name: form.querySelector("#name").value,
+    email: form.querySelector("#email").value,
+    phone: form.querySelector("#phone").value,
+    subject: form.querySelector("#subject").value,
+    message: form.querySelector("#message").value,
+    subscribe: form.querySelector("#subscribe").checked,
+    timestamp: new Date().toISOString()
+  };
+
+  // Disable submit button
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
+
+  // Simulate form submission (in production, this would be sent to a server)
+  setTimeout(() => {
+    // Store in localStorage for demonstration
+    const submissions = JSON.parse(localStorage.getItem("contactFormSubmissions") || "[]");
+    submissions.push(formData);
+    localStorage.setItem("contactFormSubmissions", JSON.stringify(submissions));
+
+    // Show success message
+    showFormMessage("Thank you! Your message has been sent successfully. We'll get back to you soon!", "success");
+
+    // Reset form
+    form.reset();
+
+    // Reset button
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send Message";
+
+    // Clear error messages
+    form.querySelectorAll(".error-message").forEach(msg => msg.classList.remove("show"));
+    form.querySelectorAll("input, textarea").forEach(field => field.classList.remove("error"));
+
+    // Clear success message after 5 seconds
+    setTimeout(() => {
+      showFormMessage("", "");
+    }, 5000);
+  }, 1500);
+}
+
+function showFormMessage(message, type) {
+  const messageElement = document.getElementById("formMessage");
+  if (!messageElement) return;
+
+  messageElement.textContent = message;
+  messageElement.className = "form-message";
+
+  if (type) {
+    messageElement.classList.add(type);
+  }
 }
