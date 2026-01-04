@@ -98,8 +98,12 @@ body {
 .header {
   background-color: #0a4aa0;
   color: #fff;
-  padding: 15px;
-  position: fixed;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .header .container {
@@ -108,6 +112,7 @@ body {
   justify-content: flex-start;
   gap: 10px;
   flex-wrap: wrap;
+  width: 95%;
 }
 
 .header-logo {
@@ -207,7 +212,7 @@ nav a:focus {
 /* Tablet / Mobile header / nav */
 @media (max-width: 1199px) {
   .header .container {
-    gap: 15px;
+    gap: 10px;
   }
 
   nav {
@@ -218,31 +223,52 @@ nav a:focus {
     background: rgba(10, 74, 160, 0.98);
     flex-direction: column;
     gap: 0;
-    padding: 20px 15px;
+    padding: 15px 12px;
     display: none;
-    z-index: 50;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    z-index: 999;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
     max-height: calc(100vh - 60px);
     overflow-y: auto;
+    width: 100%;
+    backface-visibility: hidden;
   }
 
   nav.active {
-    display: flex;
+    display: flex !important;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   nav a {
     display: block;
     padding: 14px 16px;
-    margin: 0;
+    margin: 4px 0;
     color: #fff;
     width: 100%;
     font-size: 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    text-decoration: none;
   }
 
   nav a:hover {
-    background: rgba(255,255,255,0.1);
-    transform: none;
-    padding-left: 20px;
+    background: rgba(255,255,255,0.15);
+    transform: translateX(5px);
+    padding-left: 24px;
+  }
+
+  nav a:active {
+    background: rgba(255,255,255,0.2);
   }
 
   .menu-toggle {
@@ -260,6 +286,11 @@ nav a:focus {
     margin-left: 10px;
     margin-right: 0;
     min-width: 220px;
+  }
+
+  .dark-toggle {
+    display: inline-block;
+    margin-left: 10px;
   }
 }
 
@@ -374,8 +405,12 @@ nav a:focus {
 }
 
 @media (max-width: 480px) {
+  .header {
+    padding: 10px 0;
+  }
+
   .header .container {
-    gap: 10px;
+    gap: 8px;
     padding: 0 8px;
   }
 
@@ -385,18 +420,22 @@ nav a:focus {
   }
 
   .menu-toggle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding: 6px 8px;
+    margin-left: auto;
   }
 
   .dark-toggle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 6px 8px;
-    margin-left: 10px;
+    margin-left: 8px;
+    display: inline-block;
+    visibility: visible;
+    opacity: 1;
   }
 
   .search-container {
-    gap: 10px;
+    gap: 8px;
     padding: 4px 6px;
     border-radius: 6px;
     width: 100%;
@@ -418,13 +457,14 @@ nav a:focus {
   }
 
   nav {
-    padding: 10px 8px;
-    gap: 10px;
+    padding: 12px 8px;
+    gap: 0;
   }
 
   nav a {
-    padding: 10px 12px;
-    font-size: 0.9rem;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    margin: 3px 0;
   }
 }
 
@@ -1929,6 +1969,70 @@ html {
 @media (max-width: 760px) {
   .container { width: 94%; }
   .narrow { max-width: 100%; }
+}
+
+/* ===== ULTRA SMALL SCREENS (360px) ===== */
+@media (max-width: 360px) {
+  .header {
+    padding: 8px 0;
+  }
+
+  .header .container {
+    gap: 6px;
+    padding: 0 6px;
+    width: 98%;
+  }
+
+  .header-logo {
+    width: 32px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .menu-toggle {
+    font-size: 1.2rem;
+    padding: 5px 6px;
+    flex-shrink: 0;
+  }
+
+  .dark-toggle {
+    font-size: 1rem;
+    padding: 5px 6px;
+    margin-left: 6px;
+    flex-shrink: 0;
+  }
+
+  .search-container {
+    display: none;
+  }
+
+  nav {
+    top: 50px;
+    padding: 10px 6px;
+  }
+
+  nav a {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    margin: 2px 0;
+  }
+
+  .hero {
+    padding: 40px 12px;
+  }
+
+  .hero h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .cta-btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
 }
 
 /* Buttons and inputs full width on mobile */
