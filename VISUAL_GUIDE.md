@@ -14,7 +14,6 @@
 │  [Search Input] [🔍]                │
 │  Full-width, margin-top: 8px        │
 ├──────────────────────────────────────┤
-│  Navigation (z-index: 999)           │  
 │  ┌────────────────────────────────┐  │
 │  │ HOME                      →    │  │
 │  │ SERVICES                  →    │  │
