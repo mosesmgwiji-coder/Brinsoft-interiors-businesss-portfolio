@@ -98,10 +98,8 @@ body {
 .header {
   background-color: #0a4aa0;
   color: #fff;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  padding: 15px;
+  position: fixed;
 }
 
 .header .container {
@@ -333,7 +331,7 @@ nav a:focus {
     margin: 5px 0;
   }
   }
-}
+
 
 @media (max-width: 600px) {
   .header .container {
@@ -540,15 +538,15 @@ nav a:focus {
 
 /* Header content section */
 .header-content {
-  padding: 80px;
+  padding: 80px 20px;
   text-align: left;
+  display : flex;
 }
 
 .header-text {
   max-width: 1000px;
   margin: 0 auto;
 }
-  margin: 0 auto;
 
 .header-text h2 {
   font-size: 1.6rem;
