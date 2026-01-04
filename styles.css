@@ -114,8 +114,8 @@ body {
 }
 
 .header-logo {
-  width: 80px;
-  height: 50px;
+  width: 55px;
+  height: 40px;
   object-fit: contain;
   display: inline-block;
   flex-shrink: 0;
@@ -123,7 +123,8 @@ body {
 }
 
 .header-logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  filter: brightness(1.1);
 }
 
 .menu-toggle {
@@ -254,7 +255,8 @@ nav a:focus {
   }
 
   .header-logo {
-    width: 60px;
+    width: 50px;
+    height: 36px;
   }
 
   .search-container {
@@ -287,8 +289,8 @@ nav a:focus {
   }
 
   .header-logo {
-    width: 65px;
-    height: 42px;
+    width: 48px;
+    height: 34px;
   }
 
   .menu-toggle {
@@ -341,8 +343,8 @@ nav a:focus {
   }
 
   .header-logo {
-    width: 55px;
-    height: 36px;
+    width: 45px;
+    height: 32px;
   }
 
   .menu-toggle {
@@ -381,8 +383,8 @@ nav a:focus {
   }
 
   .header-logo {
-    width: 48px;
-    height: 32px;
+    width: 42px;
+    height: 30px;
   }
 
   .menu-toggle {
@@ -435,8 +437,8 @@ nav a:focus {
   }
 
   .header-logo {
-    width: 42px;
-    height: 28px;
+    width: 38px;
+    height: 27px;
   }
 
   .dark-toggle {
