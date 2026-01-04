@@ -631,12 +631,12 @@ nav a:focus {
   .hero {
     padding: 50px 16px;
     min-height: 320px;
-    min-height: 100vh;
   }
 
   .hero h2 {
     font-size: 1.6rem;
     margin-bottom: 16px;
+    line-height: 1.3;
   }
 
   .hero p {
@@ -654,17 +654,18 @@ nav a:focus {
   }
 
   .header-content {
-    padding: 40px 16px;
+    padding: 50px 16px;
   }
 
   .header-text h2 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: 18px;
     line-height: 1.5;
+    font-weight: 600;
   }
 
   .header-text h2:last-child {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 500;
   }
 }
@@ -799,8 +800,9 @@ nav a:focus {
   }
 
   .services h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 25px;
+    font-weight: 700;
   }
 
   .services-grid {
@@ -812,12 +814,14 @@ nav a:focus {
   }
 
   .service-item h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin: 12px 0;
+    font-weight: 600;
   }
 
   .service-item p {
     font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   .service-item img {
@@ -906,22 +910,25 @@ nav a:focus {
   }
 
   .projects h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 25px;
+    font-weight: 700;
   }
 
   .project-item {
-    padding: 18px 14px;
+    padding: 20px 14px;
     margin-top: 20px;
   }
 
   .project-item h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin: 12px 0;
+    font-weight: 600;
   }
 
   .project-item p {
     font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   .project-item img {
@@ -937,17 +944,119 @@ nav a:focus {
   text-align: center;
 }
 
+.about-us h2 {
+  font-size: 2.2rem;
+  color: #0a4aa0;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.about-us p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
 .about-us img {
   width: 100%;
   max-width: 500px;
   margin-top: 20px;
   border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .about-us {
+    padding: 60px 18px;
+  }
+
+  .about-us h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .about-us p {
+    font-size: 0.95rem;
+  }
+
+  .about-us img {
+    max-width: 400px;
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us {
+    padding: 50px 16px;
+  }
+
+  .about-us h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .about-us p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .about-us img {
+    max-width: 100%;
+    margin-top: 15px;
+  }
 }
 
 /* CONTACT */
 .contact {
-  padding: 60px 0;
+  padding: 80px 20px;
   text-align: center;
+}
+
+.contact h2 {
+  font-size: 2.2rem;
+  color: #0a4aa0;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.contact p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.8;
+  margin: 15px 0;
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 60px 18px;
+  }
+
+  .contact h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .contact p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 50px 16px;
+  }
+
+  .contact h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .contact p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
 }
 
 /* FOOTER */
