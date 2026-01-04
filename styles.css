@@ -541,9 +541,9 @@ nav a:focus {
 
 /* Header content section */
 .header-content {
-  padding: 80px 20px;
+  padding: 80px;
   background: linear-gradient(to bottom, #fff 0%, #f5f7fa 100%);
-  text-align: center;
+  text-align: left;
 }
 
 .header-text {
